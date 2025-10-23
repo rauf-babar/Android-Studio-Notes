@@ -832,7 +832,8 @@ editor.apply();
 ### Rmoving File from phone
 
 ``` java 
-boolean  deleted  = getApplicationContext().deleteSharedPreferences("MyPrefs"); if (deleted) {
+boolean  deleted  = getApplicationContext().deleteSharedPreferences("MyPrefs");
+if (deleted) {
     Log.d("Prefs", "SharedPreferences file deleted successfully!");
 } else {
     Log.d("Prefs", "Failed to delete SharedPreferences file!");
