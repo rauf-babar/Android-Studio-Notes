@@ -722,7 +722,9 @@ SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 ```
 
-* This is a **global preference file** for the whole app### **(a) Using `getSharedPreferences()`**
+* This is a **global preference file** for the whole app
+
+### **(a) Using `getSharedPreferences()`**
 
 ``` java
 SharedPreferences  prefs  = getSharedPreferences("UserPrefs", MODE_PRIVATE);
