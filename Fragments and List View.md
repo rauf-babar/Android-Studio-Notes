@@ -598,8 +598,6 @@ Repeat for `FragmentTwo` and `FragmentThree`, only changing the label text.
     - The old fragment is **replaced** (previous destroyed), or
     - The new one is **added over** it (previous remains underneath, and user can pop back).
 
-Perfect — this is a really important concept in Android development, because **ListView**, **Adapters**, and **ListFragment** all work together to handle **dynamic lists of data** efficiently. Let’s go step by step conceptually first (no code yet).
-
 # 1. What is a ListView?
 
 A **ListView** is a UI component used to display a **scrollable list of items** (like messages, contacts, settings, etc.).
