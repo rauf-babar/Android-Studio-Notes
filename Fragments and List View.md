@@ -947,10 +947,6 @@ TextView tv = getView().findViewById(R.id.chatText);
 
 **Never use** `getActivity().findViewById()` unless you want a view from the **activity’s layout**, not the fragment’s.
 
-Perfect — this is an excellent scenario to learn **how multiple fragments with independent adapters communicate with a third “info” fragment**, using **both** communication styles (direct `findViewById()` access vs calling a function inside fragment).
-
-Let’s first **understand the concept deeply**, then I’ll show you the complete working example with comments.
-
 ---
 
 ## TEACHER AND STUDENTS INFO WITH MULTIPLE VIEW LIST
@@ -1420,7 +1416,7 @@ Here:
 - `setAdapter()` = ListView’s method.
 - `adapter` = your custom adapter instance.
 
-If you call just `setAdapter()` alone, it doesn’t know which ListView to apply to — that’s why you always use `listView.setAdapter(adapter)`.
+If you call just `setAdapter()` alone, it doesn’t know which ListView to apply to — that’s why you always use `listView.setAdapter(adapter)`. else implment to list fragment rather than just fragment
 
 ---
 
