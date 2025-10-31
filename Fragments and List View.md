@@ -687,10 +687,6 @@ If you need to communicate back to Activity (like item clicked → show detail),
 - A callback interface, or
 - A shared ViewModel (modern way)
 
-Excellent — this is a perfect scenario to understand **Fragment communication**, **ListView basics**, and **interfaces with polymorphism** in a real, conceptual Android pattern.
-
-We’ll make a **chat layout** with two fragments:
-
 ## Chat layout Example
 
 - Left fragment (`PeopleFragment`): shows a list of people.
