@@ -1,9 +1,6 @@
 
 # Android Intents
 
-## 1. Core Concepts
-
-**Intent**  
 An abstract description of an operation to be performed. It acts as a bridge between Android app components.
 
 ### Types of Intents
