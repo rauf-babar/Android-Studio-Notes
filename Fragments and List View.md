@@ -1728,16 +1728,3 @@ public class MainActivity extends AppCompatActivity {
 2. `PassengerListFragment` → gets data from `AppData` → populates ListView using `PassengerAdapter`.
 3. User clicks on an item → passes passenger info via `Bundle` → opens `PassengerDetailFragment`.
 4. `PassengerDetailFragment` → reads bundle → displays full info.
-
------
-| View Type                | Listener                       | Method                                                                 | Important Params                      | Meaning                        |
-| ------------------------ | ------------------------------ | ---------------------------------------------------------------------- | ------------------------------------- | ------------------------------ |
-| **Button / ImageButton** | `setOnClickListener()`         | `onClick(View v)`                                                      | `v` = the clicked view                | Triggered when clicked         |
-| **ImageView**            | `setOnClickListener()`         | `onClick(View v)`                                                      | same                                  | Used for clickable images      |
-| **EditText**             | `setOnFocusChangeListener()`   | `onFocusChange(View v, boolean hasFocus)`                              | `hasFocus` = gained/lost focus        | Detect when editing ends       |
-| **CheckBox / Switch**    | `setOnCheckedChangeListener()` | `onCheckedChanged(CompoundButton buttonView, boolean isChecked)`       | `isChecked` = current state           | Detect selection toggle        |
-| **RadioGroup**           | `setOnCheckedChangeListener()` | `onCheckedChanged(RadioGroup group, int checkedId)`                    | `checkedId` = selected RadioButton id | Detect gender/option selection |
-| **SeekBar**              | `setOnSeekBarChangeListener()` | `onProgressChanged(SeekBar s, int progress, boolean fromUser)`         | progress = new value                  | Detect slider change           |
-| **ListView**             | `setOnItemClickListener()`     | `onItemClick(AdapterView<?> parent, View view, int position, long id)` | position = clicked item               | Detect which row was clicked   |
-| **Spinner**              | `setOnItemSelectedListener()`  | `onItemSelected(AdapterView<?> parent, View view, int pos, long id)`   | pos = selected index                  | Detect selected item           |
-| **View (general)**       | `setOnLongClickListener()`     | `onLongClick(View v)`                                                  | v = clicked view                      | For long-press actions         |
