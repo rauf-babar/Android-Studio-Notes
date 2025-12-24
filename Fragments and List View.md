@@ -16,7 +16,7 @@ that can be swapped in or out dynamically
 - To manage dynamic UIs where one part changes while others stay the same.  
 - To enable navigation without switching activities (via FragmentTransaction).
 
-## FRAGMENT LIFECYCLE (Comparison with Activity)
+## FRAGMENT LIFECYCLE
 A fragment has its own lifecycle — but it is tied to the activity’s lifecycle.
 
 |Method              | When It Runs                          | Purpose |
