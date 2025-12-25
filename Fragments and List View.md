@@ -19,20 +19,21 @@ that can be swapped in or out dynamically
 ## FRAGMENT LIFECYCLE
 A fragment has its own lifecycle — but it is tied to the activity’s lifecycle.
 
-|Method              | When It Runs                          | Purpose |
-|--|--|--|
-|onAttach()| Fragment attached to its parent activity  | Initialize variables that depend on context|
-|onCreate()          | Fragment object is created             | Initialize non-UI logic or data|
-|onCreateView()      | Fragment UI is created                 | Inflate layout XML → returns a View|
-onViewCreated()     | After view is created                  | Safe to access UI elements and bind adapters
-onStart()           | Fragment becomes visible               | UI visible but not interactive
-onResume()          | Fragment active & interactive          | Ready for user input
-onPause()           | User navigates away partially          | Pause updates or animations
-onStop()            | Fragment fully hidden                  | Stop ongoing tasks
-onDestroyView()     | Fragment’s view destroyed              | Cleanup view-related resources
-onDestroy()         | Fragment destroyed                     | Final cleanup
-onDetach()          | Fragment detached from activity        | Fragment no longer has access to activity|
+Here is the updated Fragment Lifecycle table with the **full method prototypes** (access modifiers, return types, and parameters).
 
+| Method Prototype | When It Runs | Purpose |
+| --- | --- | --- |
+| `public void onAttach(@NonNull Context context)` | Fragment is first attached to its parent Activity. | Get a reference to the Activity (`context`) to use later. |
+| `public void onCreate(@Nullable Bundle savedInstanceState)` | Fragment object is created (View does not exist yet). | Initialize non-UI variables (e.g., retrieve params from `setArguments`). |
+| `public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)` | The UI is being drawn for the first time. | **Inflate the XML layout** and return the `View` to the Activity. |
+| `public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)` | Immediately after `onCreateView` returns. | **Best place for logic.** Find Views (`findViewById`), set Listeners, and update text. |
+| `public void onStart()` | Fragment becomes visible. | The UI is visible on screen, but user cannot tap it yet. |
+| `public void onResume()` | Fragment is active & interactive. | The user can now tap buttons and interact. |
+| `public void onPause()` | User is leaving (or multi-window mode). | Save urgent data. Stop animations that shouldn't run if unseen. |
+| `public void onStop()` | Fragment is fully hidden (background). | Stop heavy operations (Network calls, Database). |
+| `public void onDestroyView()` | The View is being removed from the screen. | Clean up UI references (set `binding = null`) to prevent memory leaks. |
+| `public void onDestroy()` | The Fragment object is doing final cleanup. | The object is about to be garbage collected. |
+| `public void onDetach()` | Fragment is detached from the Activity. | Release the reference to the Activity/Context. |
 
 
 ## HOW ADAPTERS FIT INTO FRAGMENTS
