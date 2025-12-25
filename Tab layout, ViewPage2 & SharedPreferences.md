@@ -178,7 +178,8 @@ If you want each tab to show a **different fragment** (most common case):
 TabLayout tabLayout = findViewById(R.id.tabLayout);
 ViewPager2 viewPager = findViewById(R.id.viewPager);
 
-ViewPagerAdapter adapter = new ViewPagerAdapter(this);
+// always "this" even if fragment or activity as we have two constructors (or keep one acc to req)
+ViewPagerAdapter adapter = new ViewPagerAdapter(this);     
 viewPager.setAdapter(adapter);
 
 new TabLayoutMediator(tabLayout, viewPager,
@@ -202,8 +203,17 @@ new TabLayoutMediator(tabLayout, viewPager,
 
 ```java
 public class ViewPagerAdapter extends FragmentStateAdapter {
-    public ViewPagerAdapter(@NonNull FragmentActivity fa) {
-        super(fa);
+
+    // --- Used by Activity ---
+    public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
+        super(fragmentActivity); 
+        // Android says: "Okay, I'll attach tabs to the Activity."
+    }
+
+    // --- Used by Fragment ---
+    public ViewPagerAdapter(@NonNull Fragment fragment) {
+        super(fragment); 
+        // Android says: "Okay, I'll attach tabs as children of this Fragment."
     }
 
     @NonNull
@@ -711,6 +721,9 @@ You can get a `SharedPreferences` instance in **two main ways**:
 
 ```java
 SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+
+// Fragment
+SharedPreferences prefs = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
 ```
 
 * `"MyPrefs"` → file name (you can give any name)
@@ -720,32 +733,12 @@ SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
 ```java
 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+// Fragment
+SharedPreferences defaultPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext());
 ```
 
 * This is a **global preference file** for the whole app
-
-### **(a) Using `getSharedPreferences()`**
-
-``` java
-SharedPreferences  prefs  = getSharedPreferences("UserPrefs", MODE_PRIVATE);
-prefs.edit().putString("username", "Abdul").apply();
-```
-
-File created → `UserPrefs.xml`
-
-If you later do:
-
-``` java
-SharedPreferences  prefs2  = getSharedPreferences("SettingsPrefs", MODE_PRIVATE);
-prefs2.edit().putBoolean("dark_mode", true).apply();
-``` 
-
-Now there are **two separate files:**
-
-`UserPrefs.xml
-SettingsPrefs.xml` 
-
-Each file is **independent** — one doesn’t know about the other.
 
 ----------
 
