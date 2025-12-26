@@ -491,6 +491,8 @@ public class Course {
 
 ### 3. The Adapter (`CourseAdapter.java`)
 
+- NO GETITEMCOUNT() FUNCTION
+
 ```java
 public class CourseAdapter extends FirebaseRecyclerAdapter<Course, CourseAdapter.CourseViewHolder> {
     
